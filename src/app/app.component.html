@@ -3,8 +3,60 @@
     Welcome to {{ title }}!
 
     
-    <h3 class="first">Basic: {{val1}}</h3>
-<p-slider [(ngModel)]="val1" [style]="{'width':'14em'}"></p-slider>
+
+
+
+<h3>Sample Layout</h3>
+<div class="p-grid sample-layout">
+    <div class="p-col-12 p-md-3">
+        Menu
+        
+        <div>
+                
+
+
+
+        
+
+
+
+            <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+
+                    <h3 class="first">Region</h3>
+                    <p-autoComplete [(ngModel)]="region" formControlName="region" id="region"
+                     [suggestions]="filteredRegionsSingle" 
+                    (completeMethod)="filterRegionSingle($event)"  [size]="30" 
+                        placeholder="Regions" [minLength]="1"></p-autoComplete>
+                    
+              
+                
+                 
+                 <h3>Prix Entre: {{rangeValues[0] + ' et ' + rangeValues[1]}}</h3>
+            <p-slider [(ngModel)]="rangeValues" formControlName="rangeValues"
+             id="rangeValues" [style]="{'width':'14em'}" [range]="true"></p-slider>
+                 
+
+              <button  [disabled]="filterForm.invalid"
+                       type="submit">
+                Filtrer
+              </button>
+        
+            </form>
+            
+          </div>
+    </div>
+    <div class="p-col-12 p-md-9  p-col-nogutter">
+        <div class="p-col-12 p-col-nogutter">
+            Top Bar
+        </div>
+        <div class="p-col-12">
+            <div class="p-grid">
+                
+            </div>     
+        </div>
+    </div>
+    
+</div>
 
 
 

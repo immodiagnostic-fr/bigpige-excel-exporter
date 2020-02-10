@@ -5,10 +5,11 @@ import {MenuItem} from 'primeng/api';
 import {SliderModule} from 'primeng/slider';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,13 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     AccordionModule,
     SliderModule,
-    ButtonModule
+    ButtonModule,
+    AutoCompleteModule
     
   ],
   providers: [],
