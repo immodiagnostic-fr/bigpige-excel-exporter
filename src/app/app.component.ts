@@ -9,7 +9,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'bigpige-excel-exporter';
-  rangeValues: number[] = [20,80];
+  rangeValues: number[] = [1000,8000];
   startDate:Date;
   stopDate:Date;
   fr:any;
