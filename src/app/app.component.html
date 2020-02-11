@@ -2,52 +2,65 @@
 
     Welcome to {{ title }}!
 
-    
 
-
-
-<h3>Sample Layout</h3>
 <div class="p-grid sample-layout">
-    <div class="p-col-12 p-md-3">
-        Menu
-        
+    <div class="p-col-12 p-md-3">               
         <div>
                 
-
-
-
-        
-
-
-
             <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
 
+                
                     <h3 class="first">Region</h3>
                     <p-autoComplete [(ngModel)]="region" formControlName="region" id="region"
                      [suggestions]="filteredRegionsSingle" 
-                    (completeMethod)="filterRegionSingle($event)"  [size]="30" 
+                    (completeMethod)="filterRegionSingle($event)"  [size]="35" 
                         placeholder="Regions" [minLength]="1"></p-autoComplete>
+
+                        <h3 class="first">Categorie</h3>
+                    <p-autoComplete [(ngModel)]="categorie" formControlName="categorie" id="categorie"
+                     [suggestions]="filteredCategoriesSingle" 
+                    (completeMethod)="filterCategorieSingle($event)"  [size]="35" 
+                        placeholder="Categories" [minLength]="1"></p-autoComplete>
+
+                        <h3 class="first">Ville</h3>
+                    <input id="input" type="text" size="35" pInputText [(ngModel)]="ville"
+                    formControlName="ville"> 
+
+                        <h3 class="first">Code Postal</h3>
+                    <input id="input" type="text" size="35" pInputText [(ngModel)]="codePostal"
+                     formControlName="codePostal"> 
                     
+                        
+                            <h3>debut </h3>
+                            <p-calendar [(ngModel)]="startDate" view="month" [locale]="fr" dateFormat="mm/yy" 
+                            formControlName="startDate" id="startDate"[style]="{'width':'77%'}" [inputStyle]="{'width':'100%'}" 
+                            [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
+                        
+                            <h3>fin</h3>
+                            <p-calendar [(ngModel)]="stopDate" view="month" [locale]="fr" dateFormat="mm/yy" 
+                            formControlName="stopDate" id="stopDate" [style]="{'width':'77%'}" [inputStyle]="{'width':'100%'}"
+                            [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
               
                 
-                 
+                        
                  <h3>Prix Entre: {{rangeValues[0] + ' et ' + rangeValues[1]}}</h3>
             <p-slider [(ngModel)]="rangeValues" formControlName="rangeValues"
-             id="rangeValues" [style]="{'width':'14em'}" [range]="true"></p-slider>
-                 
+             id="rangeValues" [style]="{'width':'16em'}" [range]="true"></p-slider>
+            
 
               <button  [disabled]="filterForm.invalid"
                        type="submit">
                 Filtrer
               </button>
         
-            </form>
-            
+            </form>            
           </div>
     </div>
     <div class="p-col-12 p-md-9  p-col-nogutter">
         <div class="p-col-12 p-col-nogutter">
-            Top Bar
+            <p-card>
+                <div></div>
+            </p-card>
         </div>
         <div class="p-col-12">
             <div class="p-grid">

@@ -10,6 +10,9 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {CalendarModule} from 'primeng/calendar';
+import {CardModule} from 'primeng/card';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionModule,
     SliderModule,
     ButtonModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    CalendarModule,
+    CardModule,
+     InputTextModule
     
   ],
   providers: [],
