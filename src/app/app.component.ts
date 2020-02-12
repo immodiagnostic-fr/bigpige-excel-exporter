@@ -82,13 +82,15 @@ filterCategorie(query, categories: any[]):any[] {
 
   initForm() {
     this.filterForm = this.formBuilder.group({      
-      region: ['', Validators.required],
-      categorie: ['', Validators.required],
-      ville:['', Validators.required],
-      codePostal:['',[ Validators.required,Validators.maxLength(5),Validators.pattern(/[0-9]{5,}/)]],
-      startDate: ['', Validators.required],
-      stopDate:['', Validators.required],
-      rangeValues: [this.rangeValues, Validators.required]
+      region: [''],
+      categorie: [''],
+      ville:[''],
+      codePostal:[''
+      //,[ Validators.required,Validators.maxLength(5),Validators.pattern(/[0-9]{5,}/)]
+    ],
+      startDate: [''],
+      stopDate:[''],
+      rangeValues: [this.rangeValues]
       
     });
   }
