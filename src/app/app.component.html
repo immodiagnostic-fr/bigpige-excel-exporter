@@ -11,28 +11,28 @@
 
                 
                     <p>Region</p>
-                    <p-autoComplete  formControlName="region" id="region"
+                    <p-autoComplete  formControlName="region" id="region"  [inputStyle]="{'width':'100%'}" [size]="35"
                      [suggestions]="filteredRegionsSingle" 
-                    (completeMethod)="filterRegionSingle($event)"  [size]="35" 
+                    (completeMethod)="filterRegionSingle($event)"  
                         placeholder="Regions" [minLength]="1"></p-autoComplete>
 
                         <p>Categorie</p>
-                    <p-autoComplete  formControlName="categorie" id="categorie"
+                    <p-autoComplete  formControlName="categorie" id="categorie"  [inputStyle]="{'width':'100%'}" [size]="35"
                      [suggestions]="filteredCategoriesSingle" 
-                    (completeMethod)="filterCategorieSingle($event)"  [size]="35" 
+                    (completeMethod)="filterCategorieSingle($event)" 
                         placeholder="Categories" [minLength]="1"></p-autoComplete>
 
                         <p>Ville</p>                    
-                    <input id="input" type="text" size="35" pInputText placeholder="Ville"
+                    <input id="input" type="text" size="35" pInputText placeholder="Ville" 
                      formControlName="ville"> 
 
                         <p>Code Postal</p>
-                    <input id="input" type="text" size="35" pInputText placeholder="Code Postal" 
+                    <input id="input" type="text" size="35"  pInputText placeholder="Code Postal" 
                      formControlName="codePostal" > 
 
                      <br/>  <br/> 
                      <p>Prix Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
-                     <p-slider [ngModel]="rangeValues"  formControlName="rangeValues" [min]="0" [max]="100000" [step]="100"
+                     <p-slider  formControlName="rangeValues" [min]="0" [max]="100000" [step]="100"
                        [style]="{'width':'80%'}" [range]="true"></p-slider>
                        <br/>
                        
@@ -50,8 +50,8 @@
               
                 
               <br/> <br/> <br/>
-              <div style="margin-left: 17.4%;">                 
-              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" 
+              <div>                 
+              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" [style]="{'width': '175%'}"
               type="submit" ></p-button>
              </div> 
             </form>            
