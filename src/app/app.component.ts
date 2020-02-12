@@ -9,7 +9,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'bigpige-excel-exporter';
-  rangeValues: number[] = [1000,8000];
+  rangeValues: number[]=[0,10000];
   startDate:Date;
   stopDate:Date;
   fr:any;
@@ -23,8 +23,12 @@ export class AppComponent implements OnInit {
   categorie: any;
   categories: any[]= ["Bureau","Appartement","Villa","Studio"];
   filteredCategoriesSingle: any[];
+  min:Date;
 
-
+  mySelect(){   
+  this.min = this.startDate;
+  }
+  
 
   filterForm: FormGroup;
 

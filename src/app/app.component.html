@@ -7,52 +7,53 @@
     <div class="p-col-12 p-md-3">               
         <div>
                 
-            <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+            <form [formGroup]="filterForm" (ngSubmit)="onFilter()" style="margin-left: 6%">
 
                 
-                    <h3 class="first">Region</h3>
-                    <p-autoComplete [(ngModel)]="region" formControlName="region" id="region"
+                    <p>Region</p>
+                    <p-autoComplete  formControlName="region" id="region"
                      [suggestions]="filteredRegionsSingle" 
                     (completeMethod)="filterRegionSingle($event)"  [size]="35" 
                         placeholder="Regions" [minLength]="1"></p-autoComplete>
 
-                        <h3 class="first">Categorie</h3>
-                    <p-autoComplete [(ngModel)]="categorie" formControlName="categorie" id="categorie"
+                        <p>Categorie</p>
+                    <p-autoComplete  formControlName="categorie" id="categorie"
                      [suggestions]="filteredCategoriesSingle" 
                     (completeMethod)="filterCategorieSingle($event)"  [size]="35" 
                         placeholder="Categories" [minLength]="1"></p-autoComplete>
 
-                        <h3 class="first">Ville</h3>
-                    <input id="input" type="text" size="35" pInputText [(ngModel)]="ville"
-                    formControlName="ville"> 
+                        <p>Ville</p>                    
+                    <input id="input" type="text" size="35" pInputText placeholder="Ville"
+                     formControlName="ville"> 
 
-                        <h3 class="first">Code Postal</h3>
-                    <input id="input" type="text" size="35" pInputText [(ngModel)]="codePostal"
-                     formControlName="codePostal"> 
+                        <p>Code Postal</p>
+                    <input id="input" type="text" size="35" pInputText placeholder="Code Postal" 
+                     formControlName="codePostal" > 
+
+                     <br/>  <br/> 
+                     <p>Prix Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
+                     <p-slider [ngModel]="rangeValues"  formControlName="rangeValues" [min]="0" [max]="100000" [step]="100"
+                       [style]="{'width':'80%'}" [range]="true"></p-slider>
+                       <br/>
+                       
                     
                         
-                            <h3>debut </h3>
-                            <p-calendar [(ngModel)]="startDate" view="month" [locale]="fr" dateFormat="mm/yy" 
-                            formControlName="startDate" id="startDate"[style]="{'width':'77%'}" [inputStyle]="{'width':'100%'}" 
+                            <p>Date Minimum </p>
+                            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  (onSelect)="mySelect()" [(ngModel)]="startDate"
+                            formControlName="startDate" id="startDate"[style]="{'width':'80%'}" [inputStyle]="{'width':'100%'}" 
                             [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
                         
-                            <h3>fin</h3>
-                            <p-calendar [(ngModel)]="stopDate" view="month" [locale]="fr" dateFormat="mm/yy" 
-                            formControlName="stopDate" id="stopDate" [style]="{'width':'77%'}" [inputStyle]="{'width':'100%'}"
+                            <p>Date Maximum</p>
+                            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="min"  [readonlyInput]="true"
+                            formControlName="stopDate" id="stopDate" [style]="{'width':'80%'}" [inputStyle]="{'width':'100%'}"
                             [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
               
                 
-                        
-                 <h3>Prix Entre: {{rangeValues[0] + ' et ' + rangeValues[1]}}</h3>
-            <p-slider [(ngModel)]="rangeValues" formControlName="rangeValues" [min]="0" [max]="10000" [step]="100"
-             id="rangeValues" [style]="{'width':'20em'}" [range]="true"></p-slider>
-            
-
-              <button  [disabled]="filterForm.invalid"
-                       type="submit">
-                Filtrer
-              </button>
-        
+              <br/> <br/> <br/>
+              <div style="margin-left: 17.4%;">                 
+              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" 
+              type="submit" ></p-button>
+             </div> 
             </form>            
           </div>
     </div>
