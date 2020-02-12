@@ -23,10 +23,16 @@ export class AppComponent implements OnInit {
   categorie: any;
   categories: any[]= ["Bureau","Appartement","Villa","Studio"];
   filteredCategoriesSingle: any[];
-  min:Date;
+  
 
-  mySelect(){   
-  this.min = this.startDate;
+ 
+
+  public get getStartDate() : string {
+    return this.filterForm.get('startDate').value;
+  }
+
+  public get getStopDate() : string {
+    return this.filterForm.get('stopDate').value;
   }
   
 

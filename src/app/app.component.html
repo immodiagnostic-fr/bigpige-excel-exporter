@@ -55,7 +55,7 @@
                     
                         
                             <p>Date Minimum </p>
-                            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  (onSelect)="mySelect()" [(ngModel)]="startDate"
+                            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
                             formControlName="startDate" id="startDate"[style]="{'width':'80%'}" [inputStyle]="{'width':'100%'}" 
                             [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
                             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('startDate').errors &&
@@ -64,7 +64,7 @@
        </p>
                         
                             <p>Date Maximum</p>
-                            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="min"  [readonlyInput]="true"
+                            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="getStartDate"  [readonlyInput]="true"
                             formControlName="stopDate" id="stopDate" [style]="{'width':'80%'}" [inputStyle]="{'width':'100%'}"
                             [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
                             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('stopDate').errors &&
