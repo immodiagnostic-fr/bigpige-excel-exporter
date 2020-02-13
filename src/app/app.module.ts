@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';   
 import {MenuItem} from 'primeng/api'; 
 import {SliderModule} from 'primeng/slider';
@@ -14,13 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CalendarModule} from 'primeng/calendar';
 import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
-import { DataService } from './data.service';
 import { TableComponent } from './table/table.component';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
-import {MultiSelectModule} from 'primeng/multiselect';
-//import { DataTableModule } from 'primeng/primeng';
-import { PaginatorModule } from 'primeng/primeng'; 
-import { Server } from 'https';
+
 
 @NgModule({
   declarations: [
@@ -41,10 +38,9 @@ import { Server } from 'https';
     CalendarModule,
     CardModule,
      InputTextModule,
-     TableModule,
-     MultiSelectModule,
-     PaginatorModule
-  
+     TableModule
+    
+     
     
   ],
   providers: [DataService],
