@@ -24,8 +24,12 @@ export class TableComponent implements OnInit {
       { field: 'date', header: 'Date' },
       { field: 'site', header: 'Site' },
       { field: 'region', header: 'Region' },
-      { field: 'departement', header: 'Departement' },
-      { field: 'codepostal', header: 'Code Postal' }
+    //  { field: 'departement', header: 'Departement' },
+      { field: 'codepostal', header: 'Code Postal' },
+       { field: 'ville', header: 'Ville' },
+       { field: 'categorie', header: 'Categorie' },
+       { field: 'prix', header: 'Prix' },
+    
   ];
   this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
 
