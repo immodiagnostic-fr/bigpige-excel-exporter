@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { DataService } from './data.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'bigpige-excel-exporter';
+  filterForm: FormGroup;
   rangeValues: number[]=[0,10000];
   startDate:Date;
   stopDate:Date;
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   categorie: any;
   categories: any[]= ["Bureau","Appartement","Villa","Studio"];
   filteredCategoriesSingle: any[];
+  data:any;
   
 
  
@@ -36,9 +38,7 @@ export class AppComponent implements OnInit {
   }
   
 
-  filterForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder,private dataService:DataService){}
 
   filterRegionSingle(event) {
     let query = event.query;    
@@ -76,6 +76,8 @@ filterCategorie(query, categories: any[]):any[] {
 
 
   ngOnInit() {
+  this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
+
     this.fr = {             
       monthNames: [ "janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre" ],
       monthNamesShort: [ "jan","fév","mar","avr","mai","jun","jul","aoû","sep","oct","nov","déc" ],
