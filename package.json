@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "font-awesome": "^4.7.0",
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.2.13",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.4",

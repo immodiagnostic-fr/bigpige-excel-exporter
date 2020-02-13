@@ -12,7 +12,6 @@ export class TableComponent implements OnInit {
   data:Annonce[];
   selectedAnnonces:Annonce[];
   cols:any[];
-  columns: any[];
   exportColumns: any[];
 
    constructor(private dataService:DataService){}
@@ -35,7 +34,7 @@ export class TableComponent implements OnInit {
     import("jspdf").then(jsPDF => {
         import("jspdf-autotable").then(x => {
             const doc = new jsPDF.default(0,0);
-            doc.autoTable(this.columns, this.data);
+            doc.autoTable(this.exportColumns, this.data);
             doc.save('primengTable.pdf');
         })
     })
