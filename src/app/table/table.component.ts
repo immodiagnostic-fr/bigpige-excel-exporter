@@ -9,13 +9,13 @@ import { Annonce } from '../Annonce';
 })
 export class TableComponent implements OnInit {
 
-  data:Annonce;
+  data:Annonce[];
   cols:any[];
 
    constructor(private dataService:DataService){}
 
   ngOnInit() {
-    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
+    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res.data;})
     
     this.cols = [
       { field: 'id', header: 'Id' },
