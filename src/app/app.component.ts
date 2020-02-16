@@ -115,6 +115,9 @@ filterCategorie(query, categories: any[]):any[] {
     const StopDate  = this.filterForm.get('stopDate').value;
     const RangeValues = this.filterForm.get('rangeValues').value;
     console.log(CodePostal);
+    //var ob:any = this.filterForm.getRawValue();
+   // this.dataService.postFiltered(this.filterForm.getRawValue()).
+    
   }
 
 }
