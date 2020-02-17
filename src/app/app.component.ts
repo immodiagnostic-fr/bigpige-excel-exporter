@@ -122,15 +122,15 @@ export class AppComponent implements OnInit {
     var ob:any = this.filterForm.getRawValue();
     console.log(ob);
     let filters = {
-      "date_minimum": ob.startDate,
-      "date_maximum": ob.stopDate,
-      "prix_minimum": ob.rangeValues ? ob.rangeValues[0] : null,
-      "prix_maximum": ob.rangeValues ? ob.rangeValues[1] : null,
-      "region": ob.region ? ob.region.region_label : null,
-      "ville": ob.ville,
-      "code_postal": ob.codePostal,
-      "categorie": ob.categorie,
-      "telephone": ob.telephone
+      "date_minimum":  ob.startDate ? ob.startDate : null,
+      "date_maximum":  ob.stopDate ? ob.stopDate : null,
+      "prix_minimum":  ob.rangeValues ? ob.rangeValues[0] : null,
+      "prix_maximum":  ob.rangeValues ? ob.rangeValues[1] : null,
+      "region":        ob.region ? ob.region.region_label : null,
+      "ville":         ob.ville ? ob.ville : null,
+      "code_postal":   ob.codePostal ? ob.codePostal : null,
+      "categorie":     ob.categorie ? ob.categorie : null,
+      "telephone":     ob.telephone ? ob.telephone : null
     }
 
     this.loading = true;
