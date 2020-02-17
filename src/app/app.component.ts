@@ -95,7 +95,8 @@ export class AppComponent implements OnInit {
       ],
       startDate: [''],
       stopDate:[''],
-      rangeValues: [this.rangeValues]
+      rangeValues: [this.rangeValues],
+      telephone: ['']
     });
   }
 
