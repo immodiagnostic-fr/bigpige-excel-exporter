@@ -9,7 +9,7 @@
 
 
             <p>Region</p>
-            <p-autoComplete  formControlName="region" id="region"  [inputStyle]="{'width':'100%'}" [size]="35"
+            <p-autoComplete  formControlName="region" id="region"
             [suggestions]="filteredRegionsSingle" 
             (completeMethod)="filterRegionSingle($event)"  
             placeholder="Regions" [minLength]="1" field="nom"></p-autoComplete>
@@ -19,7 +19,7 @@
             </p>
 
             <p>Categorie</p>
-            <p-autoComplete  formControlName="categorie" id="categorie"  [inputStyle]="{'width':'100%'}" [size]="35"
+            <p-autoComplete  formControlName="categorie" id="categorie"
             [suggestions]="filteredCategoriesSingle" 
             (completeMethod)="filterCategorieSingle($event)" 
             placeholder="Categories" [minLength]="1"></p-autoComplete>
@@ -28,8 +28,8 @@
             *Ce champs est obligatoire
             </p>
 
-            <p>Ville</p>                    
-            <input id="input" type="text" size="35" pInputText placeholder="Ville" 
+            <p>Ville</p>
+            <input id="input" type="text" pInputText placeholder="Ville" 
             formControlName="ville"> 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('ville').errors &&
             (filterForm.get('ville').dirty || filterForm.get('ville').touched )">
@@ -37,47 +37,53 @@
             </p>
 
             <p>Code Postal</p>
-            <input id="input" type="text" size="35"  pInputText placeholder="Code Postal" 
+            <input id="input" type="text"  pInputText placeholder="Code Postal" 
             formControlName="codePostal" > 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('codePostal').errors &&
             (filterForm.get('codePostal').dirty || filterForm.get('codePostal').touched )">
             *Ce champs est obligatoire et doit contenir 5 chiffres
             </p>
 
-            <br/>   
-            <p>Prix Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
+            <br/>
+            <p>Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
+            <div class="priceSlider">
             <p-slider  formControlName="rangeValues" [min]="0" [max]="100000" [step]="100"
-             [range]="true"></p-slider>
+            [styleClass]="'priceSlider'" [range]="true"></p-slider>
+            </div>
             <br/>
 
 
 
             <p>Date Minimum </p>
-            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
-            formControlName="startDate" id="startDate" [inputStyle]="{'width':'100%'}" 
-            [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
-            <p style="color:red; font-size:11px;" *ngIf="filterForm.get('startDate').errors &&
-            (filterForm.get('startDate').dirty || filterForm.get('startDate').touched )">
-            *Ce champs est obligatoire
-            </p>
+            <div class="calendar">
+                <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
+                formControlName="startDate" id="startDate"
+                [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
+                <p style="color:red; font-size:11px;" *ngIf="filterForm.get('startDate').errors &&
+                (filterForm.get('startDate').dirty || filterForm.get('startDate').touched )">
+                *Ce champs est obligatoire
+                </p>
+            </div>
 
             <p>Date Maximum</p>
-            <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="getStartDate"  [readonlyInput]="true"
-            formControlName="stopDate" id="stopDate" [inputStyle]="{'width':'100%'}"
-            [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
-            <p style="color:red; font-size:11px;" *ngIf="filterForm.get('stopDate').errors &&
-            (filterForm.get('stopDate').dirty || filterForm.get('stopDate').touched )">
-            *Ce champs est obligatoire
-            </p>
+            <div class="calendar">
+                <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="getStartDate"  [readonlyInput]="true"
+                formControlName="stopDate" id="stopDate"
+                [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
+                <p style="color:red; font-size:11px;" *ngIf="filterForm.get('stopDate').errors &&
+                (filterForm.get('stopDate').dirty || filterForm.get('stopDate').touched )">
+                *Ce champs est obligatoire
+                </p>
+            </div>
 
 
             <p>Téléphone</p>
-            <input id="input" type="text" size="35"  pInputText placeholder="Téléphone" 
+            <input id="input" type="text" pInputText placeholder="Téléphone" 
             formControlName="telephone" >
 
             <br/> <br/>
             <div>
-              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid"
+              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" [style]="{'width': '160px'}"
               type="submit" *ngIf="!loading"></p-button>
 
               <p-progressSpinner *ngIf="loading"></p-progressSpinner>

@@ -28,6 +28,9 @@ export class DataService {
     }).subscribe((res: Annonce[]) => {
     	this.annonces = res;
     	this.emitAnnonces();
+    }, (error:any) => {
+      this.annonces = [];
+      this.emitAnnonces();
     })
   }
 

@@ -118,18 +118,19 @@ export class AppComponent implements OnInit {
     // const StartDate  = this.filterForm.get('startDate').value;
     // const StopDate  = this.filterForm.get('stopDate').value;
     // const RangeValues = this.filterForm.get('rangeValues').value;
-    // console.log(CodePostal);
 
     var ob:any = this.filterForm.getRawValue();
+    console.log(ob);
     let filters = {
-      "date_minimum": ob.StartDate,
-      "date_maximum": ob.StopDate,
+      "date_minimum": ob.startDate,
+      "date_maximum": ob.stopDate,
       "prix_minimum": ob.rangeValues ? ob.rangeValues[0] : null,
       "prix_maximum": ob.rangeValues ? ob.rangeValues[1] : null,
       "region": ob.region ? ob.region.region_label : null,
       "ville": ob.ville,
       "code_postal": ob.codePostal,
-      "categorie": ob.categorie
+      "categorie": ob.categorie,
+      "telephone": ob.telephone
     }
 
     this.loading = true;
