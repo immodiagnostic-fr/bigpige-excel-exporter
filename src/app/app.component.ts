@@ -18,16 +18,13 @@ export class AppComponent implements OnInit {
   ville:string;
 
   region: any;
-  regions: any[] = ["Israel","France","Belgique","Bresil"];
+  regions: any[] = []; //["Israel","France","Belgique","Bresil"];
   filteredRegionsSingle: any[];
 
   categorie: any;
-  categories: any[]= ["Bureau","Appartement","Villa","Studio"];
+  categories: any[] = []; //["Bureau","Appartement","Villa","Studio"];
   filteredCategoriesSingle: any[];
   data:any;
-  
-
- 
 
   public get getStartDate() : string {
     return this.filterForm.get('startDate').value;
@@ -36,77 +33,75 @@ export class AppComponent implements OnInit {
   public get getStopDate() : string {
     return this.filterForm.get('stopDate').value;
   }
-  
 
   constructor(private formBuilder: FormBuilder,private dataService:DataService){}
 
   filterRegionSingle(event) {
-    let query = event.query;    
-    this.filteredRegionsSingle = this.filterRegion(query,this.regions);   
-
+    let query = event.query;
+    this.filteredRegionsSingle = this.filterRegion(query,this.regions);
   }
-    
-  filterRegion(query, regions: any[]):any[] {    
+
+  filterRegion(query, regions: any[]):any[] {
     let filtered : any[] = [];
     for(let i = 0; i < regions.length; i++) {
-        let region = regions[i];
-        if(region.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-            filtered.push(region);
-        }
-    }   
-    return filtered;
-}
-
-filterCategorieSingle(event) {
-  let query = event.query;    
-  this.filteredCategoriesSingle = this.filterCategorie(query,this.categories);   
-}
-  
-filterCategorie(query, categories: any[]):any[] {    
-  let filtered : any[] = [];
-  for(let i = 0; i < categories.length; i++) {
-      let categorie = categories[i];
-      if(categorie.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-          filtered.push(categorie);
+      let region = regions[i];
+      if(region.nom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(region);
       }
-  }   
-  return filtered;
-}
+    }
+    return filtered;
+  }
+
+  filterCategorieSingle(event) {
+    let query = event.query;
+    this.filteredCategoriesSingle = this.filterCategorie(query,this.categories);
+  }
+
+  filterCategorie(query, categories: any[]):any[] {
+    let filtered : any[] = [];
+    for(let i = 0; i < categories.length; i++) {
+      let categorie = categories[i];
+      if(categorie.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+        filtered.push(categorie);
+      }
+    }
+    return filtered;
+  }
 
 
 
   ngOnInit() {
-  this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
+    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;});
+    this.dataService.getRegions().subscribe((res:any)=>{this.regions = res;});
+    this.dataService.getCategories().subscribe((res:any)=>{this.categories = res.map(c => c.categorie);});
 
-    this.fr = {             
+    this.fr = {
       monthNames: [ "janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre" ],
       monthNamesShort: [ "jan","fév","mar","avr","mai","jun","jul","aoû","sep","oct","nov","déc" ],
       today: 'today',
       clear: 'clear'
-  }
-  
+    }
+
     this.initForm();
   }
 
   initForm() {
-    this.filterForm = this.formBuilder.group({      
+    this.filterForm = this.formBuilder.group({
       region: [''],
       categorie: [''],
       ville:[''],
       codePostal:[''
       //,[ Validators.required,Validators.maxLength(5),Validators.pattern(/[0-9]{5,}/)]
-    ],
+      ],
       startDate: [''],
       stopDate:[''],
-      rangeValues: [this.rangeValues]
-      
+      rangeValues: [this.rangeValues],
+      telephone: ['']
     });
   }
 
-  
-
   onFilter() {
-    
+
     const Region = this.filterForm.get('region').value;
     const Categorie = this.filterForm.get('categorie').value;
     const Ville =this.filterForm.get('ville').value;

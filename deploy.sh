@@ -1,3 +1,4 @@
+ng build
 rm -rf ../bigpige-excel-exporter-dist/*
 cp ./composer.json ../bigpige-excel-exporter-dist
 cp ./app.json ../bigpige-excel-exporter-dist
