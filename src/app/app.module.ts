@@ -17,7 +17,7 @@ import { TableComponent } from './table/table.component';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
-
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -37,11 +37,9 @@ import {TableModule} from 'primeng/table';
     AutoCompleteModule,
     CalendarModule,
     CardModule,
-     InputTextModule,
-     TableModule
-    
-     
-    
+    InputTextModule,
+    TableModule,
+    ProgressSpinnerModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
