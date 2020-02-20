@@ -1,11 +1,10 @@
 <p-table #dt [columns]="cols" [value]="data"  selectionMode="multiple" [(selection)]="selectedAnnonces" [paginator]="true" [rows]="25">
-        <ng-template pTemplate="caption">
-                <div class="ui-helper-clearfix" style="text-align: left">
-                    <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="margin-right: 0.5em;"></button>
-                    <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
-                    <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF" (click)="exportPdf()" class="ui-button-warning"></button>                 
-                </div>
-            </ng-template>
+    <ng-template pTemplate="caption">
+        <div class="ui-helper-clearfix" style="text-align: left">
+            <strong *ngIf="result_size">{{result_size}} résultats</strong>
+            <a [href]="result_csv_download_link" *ngIf="result_csv_download_link" target="_blank">Obtenir le fichier CSV</a>
+        </div>
+    </ng-template>
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns" [pSortableColumn]="col.field">

@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Annonce } from './Annonce';
+import { AnnonceSearchResultModel } from './AnnonceSearchResultModel';
 import { Subject } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private annonces: Annonce[] = [];
-  public annoncesSubject = new Subject<Annonce[]>();
+  public searchResult = new Subject<AnnonceSearchResultModel>();
 
   constructor(private http: HttpClient) {}
 
-  emitAnnonces() {
-    this.annoncesSubject.next(this.annonces);
+  emitAnnonces(searchResult) {
+    this.searchResult.next(searchResult);
   }
 
   getAnnonces() {
@@ -23,14 +24,12 @@ export class DataService {
   }
 
   postFiltered(filtered: any) {
-    return this.http.post(env.api_host + "/annonces", filtered, {
+    return this.http.post(env.api_host + "/annonces/recherche", filtered, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    }).subscribe((res: Annonce[]) => {
-    	this.annonces = res;
-    	this.emitAnnonces();
+    }).subscribe((res: AnnonceSearchResultModel) => {
+    	this.emitAnnonces(res);
     }, (error:any) => {
-      this.annonces = [];
-      this.emitAnnonces();
+      this.emitAnnonces(new AnnonceSearchResultModel());
     })
   }
 

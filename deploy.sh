@@ -1,4 +1,3 @@
-ng build --prod --base-href /excel-exporter/bigpige-excel-exporter-dist/
 rm -rf ../bigpige-excel-exporter-dist/*
 cp ./composer.json ../bigpige-excel-exporter-dist
 cp ./app.json ../bigpige-excel-exporter-dist

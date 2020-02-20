@@ -15,6 +15,8 @@ export class TableComponent implements OnInit {
   cols:any[];
   exportColumns: any[];
   searchSubscription:Subscription;
+  result_size:number;
+  result_csv_download_link:string;
 
   constructor(private dataService:DataService){}
 
@@ -34,8 +36,10 @@ export class TableComponent implements OnInit {
     ];
     this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
 
-    this.searchSubscription = this.dataService.annoncesSubject.subscribe(searchResult => {
-      this.data = searchResult;
+    this.searchSubscription = this.dataService.searchResult.subscribe(searchResult => {
+      this.data = searchResult.list;
+      this.result_size = searchResult.size;
+      this.result_csv_download_link = searchResult.file;
     })
   }
   exportPdf() {

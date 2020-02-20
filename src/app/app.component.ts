@@ -126,9 +126,7 @@ export class AppComponent implements OnInit {
       "date_maximum":  ob.stopDate ? ob.stopDate : null,
       "prix_minimum":  ob.rangeValues ? ob.rangeValues[0] : null,
       "prix_maximum":  ob.rangeValues ? ob.rangeValues[1] : null,
-      "region":        ob.region ? ob.region.region_label : null,
-      "ville":         ob.ville ? ob.ville : null,
-      "code_postal":   ob.codePostal ? ob.codePostal : null,
+      "region":        ob.region ? [ob.region.region_label] : null,
       "categorie":     ob.categorie ? ob.categorie : null,
       "telephone":     ob.telephone ? ob.telephone : null
     }

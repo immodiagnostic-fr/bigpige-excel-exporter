@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_host: "https://bigpige-excel-exporter-api.herokuapp.com"
+  api_host: "http://bigpige.com/excel-exporter/php-api"
 };
 
 /*
