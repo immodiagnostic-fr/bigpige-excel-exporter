@@ -19,14 +19,12 @@
             </p>
 
             <p>Categorie</p>
-            <p-autoComplete  formControlName="categorie" id="categorie"
-            [suggestions]="filteredCategoriesSingle" 
-            (completeMethod)="filterCategorieSingle($event)" 
-            placeholder="Categories" [minLength]="1"></p-autoComplete>
-            <p style="color:red; font-size:11px;" *ngIf="filterForm.get('categorie').errors &&
-            (filterForm.get('categorie').dirty || filterForm.get('categorie').touched )">
-            *Ce champs est obligatoire
-            </p>
+            <p-multiSelect [options]="categories" formControlName="selectedCategories"
+              [showToggleAll]="false" [style]="{'width':'200px'}" [filter]="true"
+               [resetFilterOnHide]="true"></p-multiSelect>
+             
+
+           
 
             <p>Ville</p>
             <input id="input" type="text" pInputText placeholder="Ville" 

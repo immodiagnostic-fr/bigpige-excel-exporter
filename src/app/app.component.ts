@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from './data.service';
 import { forkJoin } from 'rxjs';
+import { Annonce } from './Annonce';
+import { SelectItem } from 'primeng/api/selectitem';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +23,12 @@ export class AppComponent implements OnInit {
   regions: any[] = []; //["Israel","France","Belgique","Bresil"];
   filteredRegionsSingle: any[];
 
-  categorie: any;
-  categories: any[] = []; //["Bureau","Appartement","Villa","Studio"];
+ 
+  selectedCategories: string[] = [];
+  data:Annonce[]=[];
+  categories: SelectItem[]=[] ; //["Bureau","Appartement","Villa","Studio"];
   filteredCategoriesSingle: any[];
-  data:any;
+
 
   loading:boolean = true;
 
@@ -36,7 +40,16 @@ export class AppComponent implements OnInit {
     return this.filterForm.get('stopDate').value;
   }
 
-  constructor(private formBuilder: FormBuilder,private dataService:DataService){}
+  constructor(private formBuilder: FormBuilder,private dataService:DataService){
+
+    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res.data;
+      this.categories = [];
+          for (let i = 0; i < this.data.length; i++) {
+              this.categories.push({label:this.data[i].ville, value: this.data[i].ville});
+          }
+    })
+    
+  }
 
   filterRegionSingle(event) {
     let query = event.query;
@@ -54,21 +67,7 @@ export class AppComponent implements OnInit {
     return filtered;
   }
 
-  filterCategorieSingle(event) {
-    let query = event.query;
-    this.filteredCategoriesSingle = this.filterCategorie(query,this.categories);
-  }
-
-  filterCategorie(query, categories: any[]):any[] {
-    let filtered : any[] = [];
-    for(let i = 0; i < categories.length; i++) {
-      let categorie = categories[i];
-      if(categorie.toLowerCase().indexOf(query.toLowerCase()) != -1) {
-        filtered.push(categorie);
-      }
-    }
-    return filtered;
-  }
+  
 
 
 
@@ -97,7 +96,7 @@ export class AppComponent implements OnInit {
   initForm() {
     this.filterForm = this.formBuilder.group({
       region: [null],
-      categorie: [null],
+      selectedCategories: [null],
       ville:[null],
       codePostal:[null,
       //[ Validators.required,Validators.maxLength(5),Validators.pattern(/[0-9]{5,}/)]
@@ -127,7 +126,7 @@ export class AppComponent implements OnInit {
       "prix_minimum":  ob.rangeValues ? ob.rangeValues[0] : null,
       "prix_maximum":  ob.rangeValues ? ob.rangeValues[1] : null,
       "region":        ob.region ? [ob.region.region_label] : null,
-      "categorie":     ob.categorie ? ob.categorie : null,
+      "selectedCategories":     ob.categorie ? ob.categorie : null,
       "telephone":     ob.telephone ? ob.telephone : null
     }
 

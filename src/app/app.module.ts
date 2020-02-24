@@ -18,6 +18,7 @@ import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     CardModule,
     InputTextModule,
     TableModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    MultiSelectModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
