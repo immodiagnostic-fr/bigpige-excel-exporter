@@ -6,23 +6,23 @@
         <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="left-search-form">
 
 
-            <p>Region</p>
+            <!-- <p>Region</p> -->
             <p-multiSelect [options]="regions" formControlName="selectedRegions"
               [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Region"
                [resetFilterOnHide]="true"></p-multiSelect>
 
-            <p>Categorie</p>
+            <!-- <p>Categorie</p> -->
             <p-multiSelect [options]="categories" formControlName="selectedCategories"
               [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Categorie"
                [resetFilterOnHide]="true"></p-multiSelect>
              
-               <p>Departement</p>
+               <!-- <p>Departement</p> -->
                <p-multiSelect [options]="departements" formControlName="selectedDepartements"
                  [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px'}" defaultLabel="Departement"
                   [resetFilterOnHide]="true"></p-multiSelect>
            
 
-            <p>Ville</p>
+            <!-- <p>Ville</p> -->
             <input id="input" type="text" pInputText placeholder="Ville" 
             formControlName="ville"> 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('ville').errors &&
@@ -30,7 +30,7 @@
             *Ce champs est obligatoire
             </p>
 
-            <p>Code Postal</p>
+            <!-- <p>Code Postal</p> -->
             <input id="input" type="text"  pInputText placeholder="Code Postal" 
             formControlName="codePostal" > 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('codePostal').errors &&
