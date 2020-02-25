@@ -37,6 +37,10 @@ export class DataService {
   	return this.http.get(env.api_host + "/regions");
   }
 
+  getDepartements() {
+  	return this.http.get(env.api_host + "/departements");
+  }
+
   getCategories() {
   	return this.http.get(env.api_host + "/annonces/categories");
   }

@@ -1,7 +1,5 @@
 
 
-
-
 <div class="p-grid sample-layout">
     <div class="p-col-12 p-md-2">
         <img src="assets/images/logo.png" class="logo" />
@@ -9,21 +7,19 @@
 
 
             <p>Region</p>
-            <p-autoComplete  formControlName="region" id="region"
-            [suggestions]="filteredRegionsSingle" 
-            (completeMethod)="filterRegionSingle($event)"  
-            placeholder="Regions" [minLength]="1" field="nom"></p-autoComplete>
-            <p style="color:red; font-size:11px;" *ngIf="filterForm.get('region').errors &&
-            (filterForm.get('region').dirty || filterForm.get('region').touched )">
-                *ce champs est obligatoire
-            </p>
+            <p-multiSelect [options]="regions" formControlName="selectedRegions"
+              [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Region"
+               [resetFilterOnHide]="true"></p-multiSelect>
 
             <p>Categorie</p>
             <p-multiSelect [options]="categories" formControlName="selectedCategories"
-              [showToggleAll]="false" [style]="{'width':'200px'}" [filter]="true"
+              [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Categorie"
                [resetFilterOnHide]="true"></p-multiSelect>
              
-
+               <p>Departement</p>
+               <p-multiSelect [options]="departements" formControlName="selectedDepartements"
+                 [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px'}" defaultLabel="Departement"
+                  [resetFilterOnHide]="true"></p-multiSelect>
            
 
             <p>Ville</p>
@@ -45,7 +41,7 @@
             <br/>
             <p>Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
             <div class="priceSlider">
-            <p-slider  formControlName="rangeValues" [min]="0" [max]="100000" [step]="100"
+            <p-slider  formControlName="rangeValues" [min]="0" [max]="1000000" [step]="100"
             [styleClass]="'priceSlider'" [range]="true"></p-slider>
             </div>
             <br/>

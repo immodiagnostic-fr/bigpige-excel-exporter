@@ -12,23 +12,22 @@ import { SelectItem } from 'primeng/api/selectitem';
 })
 export class AppComponent implements OnInit {
   filterForm: FormGroup;
-  rangeValues: number[]=[0,100000];
+  rangeValues: number[]=[0,1000000];
   startDate:Date;
   stopDate:Date;
   fr:any;
   codePostal:string;
   ville:string;
-
-  region: any;
-  regions: any[] = []; //["Israel","France","Belgique","Bresil"];
-  filteredRegionsSingle: any[];
-
- 
-  selectedCategories: string[] = [];
   data:Annonce[]=[];
-  categories: SelectItem[]=[] ; //["Bureau","Appartement","Villa","Studio"];
-  filteredCategoriesSingle: any[];
 
+  selectedRegions: string[] = [];
+  regions: SelectItem[]=[];
+ 
+  selectedCategories: string[] = []; 
+  categories: SelectItem[]=[] ;
+  
+  selectedDepartements: string[] = []; 
+  departements:  SelectItem[]=[] ;
 
   loading:boolean = true;
 
@@ -41,31 +40,10 @@ export class AppComponent implements OnInit {
   }
 
   constructor(private formBuilder: FormBuilder,private dataService:DataService){
-
-    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res.data;
-      this.categories = [];
-          for (let i = 0; i < this.data.length; i++) {
-              this.categories.push({label:this.data[i].ville, value: this.data[i].ville});
-          }
-    })
     
   }
 
-  filterRegionSingle(event) {
-    let query = event.query;
-    this.filteredRegionsSingle = this.filterRegion(query,this.regions);
-  }
-
-  filterRegion(query, regions: any[]):any[] {
-    let filtered : any[] = [];
-    for(let i = 0; i < regions.length; i++) {
-      let region = regions[i];
-      if(region.nom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(region);
-      }
-    }
-    return filtered;
-  }
+  
 
   
 
@@ -75,12 +53,25 @@ export class AppComponent implements OnInit {
     forkJoin(
       this.dataService.getAnnonces(),
       this.dataService.getRegions(),
-      this.dataService.getCategories()
-    ).subscribe((res:[any[], any[], any[]])=> {
+      this.dataService.getCategories(),
+      this.dataService.getDepartements()
+    ).subscribe((res:[any[], any[], any[], any[]])=> {
       this.data = res[0];
-      this.regions = res[1];
-      this.categories = res[2].map(c => c.categorie);
-      this.loading = false;
+      //this.regions = res[1];
+      //this.categories = res[2].map(c => c.categorie);     
+      this.regions = [];
+          for (let i = 0; i < res[1].length; i++) {
+              this.regions.push({label: res[1][i].region_label, value:  res[1][i].region_label});
+          }
+      this.categories = [];
+          for (let i = 0; i < res[2].length; i++) {
+              this.categories.push({label: res[2][i].categorie, value:  res[2][i].categorie});
+          }
+          this.departements = [];
+          for (let i = 0; i < res[3].length; i++) {
+              this.departements.push({label: res[3][i].departement_code + " "+ res[3][i].departement_nom, value:  res[3][i].departement_code});
+          }    
+          this.loading = false;
     });
 
     this.fr = {
@@ -95,8 +86,9 @@ export class AppComponent implements OnInit {
 
   initForm() {
     this.filterForm = this.formBuilder.group({
-      region: [null],
+      selectedRegions: [null],
       selectedCategories: [null],
+      selectedDepartements:[null],
       ville:[null],
       codePostal:[null,
       //[ Validators.required,Validators.maxLength(5),Validators.pattern(/[0-9]{5,}/)]
@@ -125,9 +117,10 @@ export class AppComponent implements OnInit {
       "date_maximum":  ob.stopDate ? ob.stopDate : null,
       "prix_minimum":  ob.rangeValues ? ob.rangeValues[0] : null,
       "prix_maximum":  ob.rangeValues ? ob.rangeValues[1] : null,
-      "region":        ob.region ? [ob.region.region_label] : null,
-      "selectedCategories":     ob.categorie ? ob.categorie : null,
-      "telephone":     ob.telephone ? ob.telephone : null
+      "selectedRegions":  ob.selectedRegions ? ob.selectedRegions : null,
+      "selectedCategories":  ob.selectedCategories ? ob.selectedCategories : null,
+      "selectedDepartements": ob.selectedDepartements ? ob.selectedDepartements : null,
+      "telephone":  ob.telephone ? ob.telephone : null
     }
 
     this.loading = true;
