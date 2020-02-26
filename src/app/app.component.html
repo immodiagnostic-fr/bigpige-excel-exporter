@@ -5,23 +5,23 @@
         <img src="assets/images/logo.png" class="logo" />
         <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="left-search-form">
 
-
+            
             <!-- <p>Region</p> -->
             <p-multiSelect [options]="regions" formControlName="selectedRegions"
               [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Region"
                [resetFilterOnHide]="true"></p-multiSelect>
-
+               <br/> <br/>
             <!-- <p>Categorie</p> -->
             <p-multiSelect [options]="categories" formControlName="selectedCategories"
               [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Categorie"
                [resetFilterOnHide]="true"></p-multiSelect>
-             
+               <br/> <br/>
                <!-- <p>Departement</p> -->
                <p-multiSelect [options]="departements" formControlName="selectedDepartements"
                  [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px'}" defaultLabel="Departement"
                   [resetFilterOnHide]="true"></p-multiSelect>
            
-
+                  <br/><br/>
             <!-- <p>Ville</p> -->
             <input id="input" type="text" pInputText placeholder="Ville" 
             formControlName="ville"> 
@@ -29,7 +29,7 @@
             (filterForm.get('ville').dirty || filterForm.get('ville').touched )">
             *Ce champs est obligatoire
             </p>
-
+            <br/><br/>
             <!-- <p>Code Postal</p> -->
             <input id="input" type="text"  pInputText placeholder="Code Postal" 
             formControlName="codePostal" > 
@@ -37,21 +37,28 @@
             (filterForm.get('codePostal').dirty || filterForm.get('codePostal').touched )">
             *Ce champs est obligatoire et doit contenir 5 chiffres
             </p>
+            <br/> <br/>
+            <input id="input" type="text" pInputText placeholder="Téléphone" 
+            formControlName="telephone" >
 
             <br/>
-            <p>Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
+            <p>Prix entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
             <div class="priceSlider">
             <p-slider  formControlName="rangeValues" [min]="0" [max]="1000000" [step]="100"
             [styleClass]="'priceSlider'" [range]="true"></p-slider>
             </div>
-            <br/>
+            
+
+            
+            
 
 
 
-            <p>Date Minimum </p>
-            <div class="calendar">
+            <br/> <br/>
+            <div class="calendar" style="margin-bottom: 25px;">
                 <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
-                formControlName="startDate" id="startDate"
+                formControlName="startDate" id="startDate"  [showIcon]="true"   
+                [inputStyle]="{'width':'140px'}" placeholder="Date Minimum"
                 [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
                 <p style="color:red; font-size:11px;" *ngIf="filterForm.get('startDate').errors &&
                 (filterForm.get('startDate').dirty || filterForm.get('startDate').touched )">
@@ -59,10 +66,11 @@
                 </p>
             </div>
 
-            <p>Date Maximum</p>
-            <div class="calendar">
+            
+            <div class="calendar" style="margin-bottom: 25px;">
                 <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="getStartDate"  [readonlyInput]="true"
-                formControlName="stopDate" id="stopDate"
+                formControlName="stopDate" id="stopDate"  [showIcon]="true"
+                [inputStyle]="{'width':'140px'}" placeholder="Date Maximum"
                 [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
                 <p style="color:red; font-size:11px;" *ngIf="filterForm.get('stopDate').errors &&
                 (filterForm.get('stopDate').dirty || filterForm.get('stopDate').touched )">
@@ -71,13 +79,11 @@
             </div>
 
 
-            <p>Téléphone</p>
-            <input id="input" type="text" pInputText placeholder="Téléphone" 
-            formControlName="telephone" >
+            
 
-            <br/> <br/>
+             
             <div>
-              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" [style]="{'width': '160px'}"
+              <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" [style]="{'min-width': '175px'}"
               type="submit" *ngIf="!loading"></p-button>
 
               <p-progressSpinner *ngIf="loading"></p-progressSpinner>
