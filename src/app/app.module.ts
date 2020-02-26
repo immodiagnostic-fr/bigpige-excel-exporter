@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     InputTextModule,
     TableModule,
     ProgressSpinnerModule,
-    MultiSelectModule
+    MultiSelectModule,
+    ProgressBarModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
