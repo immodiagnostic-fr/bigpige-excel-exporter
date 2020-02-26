@@ -86,7 +86,7 @@
               <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" [style]="{'min-width': '175px'}"
               type="submit" *ngIf="!loading"></p-button>
 
-              <p-progressSpinner *ngIf="loading"></p-progressSpinner>
+              <p-progressSpinner *ngIf="loading" [style]="{'margin-left':'20%'}"></p-progressSpinner>
             </div>
         </form>
     </div>
