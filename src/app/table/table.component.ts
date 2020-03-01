@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import { Annonce } from '../Annonce';
 import { Subscription } from 'rxjs';
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class TableComponent implements OnInit {
 
+  @Input() filterResult:any;
   data:Annonce[];
   selectedAnnonces:Annonce[];
   cols:any[];
@@ -90,10 +91,13 @@ export class TableComponent implements OnInit {
   showDialog(){
     this.displayBasic=true;
   }
-  sauvegarder(name:string){
-    //this.text=name;
+  
+  sauvegarder(){
+    this.dataService.saveSearched(this.text,this.filterResult).add(()=>{
     console.log(this.text);
     this.text=null;
     this.displayBasic = false;
+    });
+   
   }
 }

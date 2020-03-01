@@ -1,3 +1,4 @@
+
 <p-table #dt [columns]="cols" [value]="data"  selectionMode="multiple" [(selection)]="selectedAnnonces" [paginator]="true" [rows]="25">
     <ng-template pTemplate="caption">
         <div class="ui-helper-clearfix" style="text-align: left">
@@ -13,7 +14,7 @@
                  
                   <input  type="text" size="30" pInputText [(ngModel)]="text"> 
                <p-footer>
-              <button type="button" pButton  (click)="sauvegarder(text)" label="Sauvegarder" [disabled]="!text"></button>       
+              <button type="button" pButton  (click)="sauvegarder()" label="Sauvegarder" [disabled]="!text"></button>       
               </p-footer>
              </p-dialog>
         

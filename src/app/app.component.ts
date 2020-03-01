@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   codePostal:string;
   ville:string;
   data:Annonce[]=[];
+  filters:any;
 
   selectedRegions: string[] = [];
   regions: SelectItem[]=[];
@@ -112,7 +113,7 @@ export class AppComponent implements OnInit {
 
     var ob:any = this.filterForm.getRawValue();
     console.log(ob);
-    let filters = {
+    this.filters = {
       "date_minimum":  ob.startDate ? ob.startDate : null,
       "date_maximum":  ob.stopDate ? ob.stopDate : null,
       "prix_minimum":  ob.rangeValues ? ob.rangeValues[0] : null,
@@ -127,7 +128,7 @@ export class AppComponent implements OnInit {
     }
 
     this.loading = true;
-    this.dataService.postFiltered(filters).add(()=>{
+    this.dataService.postFiltered(this.filters).add(()=>{
       this.loading = false;
     });
   }

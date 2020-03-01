@@ -33,6 +33,17 @@ export class DataService {
     })
   }
 
+  saveSearched(name:string,filtered: any) {
+    alert(filtered);
+    return this.http.post(env.api_host + "/recherches",  filtered, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }).subscribe(() => {
+    	
+    }, (error:any) => {
+      
+    })
+  }
+
   getRegions() {
   	return this.http.get(env.api_host + "/regions");
   }
