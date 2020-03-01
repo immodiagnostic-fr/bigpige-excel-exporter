@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
   selectedDepartements: string[] = []; 
   departements:  SelectItem[]=[] ;
 
+  typeTelephone = ['1'];
+
   loading:boolean = true;
 
   public get getStartDate() : string {
@@ -42,11 +44,6 @@ export class AppComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private dataService:DataService){
     
   }
-
-  
-
-  
-
 
 
   ngOnInit() {
@@ -96,7 +93,10 @@ export class AppComponent implements OnInit {
       startDate: [null],
       stopDate:[null],
       rangeValues: [this.rangeValues],
-      telephone: [null]
+      telephone: [null],
+      typeTelephone: [this.typeTelephone
+        //,Validators.required
+      ]
     });
   }
 
@@ -122,7 +122,8 @@ export class AppComponent implements OnInit {
       "code_postal":  ob.codePostal ? ob.codePostal : null,
       "categorie":  ob.selectedCategories ? ob.selectedCategories : null,
       "departement_code": ob.selectedDepartements ? ob.selectedDepartements : null,
-      "telephone":  ob.telephone ? ob.telephone : null
+      "telephone":  ob.telephone ? ob.telephone : null,
+      "type_telephone" : ob.typeTelephone ? ob.typeTelephone : null
     }
 
     this.loading = true;
@@ -130,5 +131,10 @@ export class AppComponent implements OnInit {
       this.loading = false;
     });
   }
+
+  // reset(){
+  //  // this.filterForm.reset();
+  //   this.initForm();
+  // }
 
 }

@@ -41,7 +41,15 @@
             <input id="input" type="text" pInputText placeholder="Téléphone" 
             formControlName="telephone" >
 
-            <br/>
+
+
+            
+            <br/> <br/> 
+   <p-checkbox name="group1" value="1" label="Telephone Portable" [formControl]="filterForm.controls['typeTelephone']" inputId="tp"></p-checkbox><br/>
+   <p-checkbox name="group1" value="2" label="Telephone Fixe" [formControl]="filterForm.controls['typeTelephone']" inputId="tf"></p-checkbox> 
+
+
+            <br/> 
             <p>Prix entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
             <div class="priceSlider">
             <p-slider  formControlName="rangeValues" [min]="0" [max]="1000000" [step]="100"
@@ -55,7 +63,7 @@
 
 
             <br/> <br/>
-            <div class="calendar" style="margin-bottom: 25px;">
+            <div class="calendar" style="margin-bottom: 20px;">
                 <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
                 formControlName="startDate" id="startDate"  [showIcon]="true"   
                 [inputStyle]="{'width':'140px'}" placeholder="Date Minimum"
@@ -67,7 +75,7 @@
             </div>
 
             
-            <div class="calendar" style="margin-bottom: 25px;">
+            <div class="calendar" style="margin-bottom: 20px;">
                 <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy" [minDate]="getStartDate"  [readonlyInput]="true"
                 formControlName="stopDate" id="stopDate"  [showIcon]="true"
                 [inputStyle]="{'width':'140px'}" placeholder="Date Maximum"
@@ -92,6 +100,8 @@
 
                 <p-progressBar mode="indeterminate"  *ngIf="loading"
                  [style]="{'height': '3px','width': '175px'}"></p-progressBar>
+<br/> <br/>
+                 <button pButton type="button" label="Reset" class="ui-button-danger" (click)="initForm()"></button>
             </div>
         </form>
     </div>

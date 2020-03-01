@@ -20,6 +20,7 @@ import {TableModule} from 'primeng/table';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ProgressBarModule} from 'primeng/progressbar';
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import {ProgressBarModule} from 'primeng/progressbar';
     TableModule,
     ProgressSpinnerModule,
     MultiSelectModule,
-    ProgressBarModule
+    ProgressBarModule,
+    CheckboxModule
+
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
