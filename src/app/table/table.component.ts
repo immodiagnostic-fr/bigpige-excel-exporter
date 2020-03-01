@@ -17,6 +17,8 @@ export class TableComponent implements OnInit {
   searchSubscription:Subscription;
   result_size:number;
   result_csv_download_link:string;
+  displayBasic: boolean;
+  text:string;
 
   constructor(private dataService:DataService){}
 
@@ -85,4 +87,13 @@ export class TableComponent implements OnInit {
     return annonces;
   }
 
+  showDialog(){
+    this.displayBasic=true;
+  }
+  sauvegarder(name:string){
+    //this.text=name;
+    console.log(this.text);
+    this.text=null;
+    this.displayBasic = false;
+  }
 }

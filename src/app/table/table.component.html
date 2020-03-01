@@ -3,7 +3,20 @@
         <div class="ui-helper-clearfix" style="text-align: left">
             <strong *ngIf="result_size">{{result_size}} résultats</strong>
             <a [href]="result_csv_download_link" *ngIf="result_csv_download_link" target="_blank">Obtenir le fichier CSV</a>
+            
         </div>
+         
+              <button type="button" (click)="showDialog()" pButton  label="Sauvgarder La Recherche"></button>
+            
+              <p-dialog header=" Veuillez saisir un nom pour cette recherche" [(visible)]="displayBasic"
+               [style]="{width: '30vw'}" [baseZIndex]="10000">
+                 
+                  <input  type="text" size="30" pInputText [(ngModel)]="text"> 
+               <p-footer>
+              <button type="button" pButton  (click)="sauvegarder(text)" label="Sauvegarder" [disabled]="!text"></button>       
+              </p-footer>
+             </p-dialog>
+        
     </ng-template>
     <ng-template pTemplate="header" let-columns>
         <tr>

@@ -23,7 +23,7 @@
            
                   <br/><br/>
             <!-- <p>Ville</p> -->
-            <input id="input" type="text" pInputText placeholder="Ville" 
+            <input  type="text" pInputText placeholder="Ville" 
             formControlName="ville"> 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('ville').errors &&
             (filterForm.get('ville').dirty || filterForm.get('ville').touched )">
@@ -31,14 +31,14 @@
             </p>
             <br/><br/>
             <!-- <p>Code Postal</p> -->
-            <input id="input" type="text"  pInputText placeholder="Code Postal" 
+            <input  type="text"  pInputText placeholder="Code Postal" 
             formControlName="codePostal" > 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('codePostal').errors &&
             (filterForm.get('codePostal').dirty || filterForm.get('codePostal').touched )">
             *Ce champs est obligatoire et doit contenir 5 chiffres
             </p>
             <br/> <br/>
-            <input id="input" type="text" pInputText placeholder="Téléphone" 
+            <input  type="text" pInputText placeholder="Téléphone" 
             formControlName="telephone" >
 
 

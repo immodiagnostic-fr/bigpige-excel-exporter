@@ -21,6 +21,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CheckboxModule} from 'primeng/checkbox';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     ProgressSpinnerModule,
     MultiSelectModule,
     ProgressBarModule,
-    CheckboxModule
+    CheckboxModule,
+    DialogModule
 
   ],
   providers: [DataService],
