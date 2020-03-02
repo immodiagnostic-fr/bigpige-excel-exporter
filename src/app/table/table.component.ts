@@ -35,7 +35,8 @@ export class TableComponent implements OnInit {
       { field: 'codepostal', header: 'Code Postal' },
       { field: 'ville', header: 'Ville' },
       { field: 'categorie', header: 'Categorie' },
-      { field: 'prix', header: 'Prix' },
+      { field: 'prix', header: 'Prix' }
+      
     ];
     this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
 
@@ -93,10 +94,15 @@ export class TableComponent implements OnInit {
   }
   
   sauvegarder(){
-    this.dataService.saveSearched(this.text,this.filterResult).add(()=>{
+    this.dataService.saveSearched(this.text,this.filterResult).subscribe((res:any)=>{
     console.log(this.text);
+    if(!res.error){
     this.text=null;
     this.displayBasic = false;
+    }
+    else{
+      alert(res.message);
+    }
     });
    
   }

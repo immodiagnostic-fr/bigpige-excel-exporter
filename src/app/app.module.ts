@@ -22,11 +22,15 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CheckboxModule} from 'primeng/checkbox';
 import {DialogModule} from 'primeng/dialog';
+import { ResearchTableComponent } from './research-table/research-table.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    ResearchTableComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
