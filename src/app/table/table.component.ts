@@ -95,7 +95,6 @@ export class TableComponent implements OnInit {
   
   sauvegarder(){
     this.dataService.saveSearched(this.text,this.filterResult).subscribe((res:any)=>{
-    console.log(this.text);
     if(!res.error){
     this.text=null;
     this.displayBasic = false;

@@ -24,13 +24,15 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {DialogModule} from 'primeng/dialog';
 import { ResearchTableComponent } from './research-table/research-table.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     ResearchTableComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
