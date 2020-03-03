@@ -10,11 +10,11 @@ import { Annonce } from '../Annonce';
 export class ResearchTableComponent implements OnInit {
 
  // result:any[];
- data:Annonce[];
+ data:any[];
   cols:any[];
   exportColumns: any[];
 
-  cloned: { [s: string]: Annonce; } = {};
+  cloned: { [s: string]: any; } = {};
   
 
   constructor(private dataService:DataService) { }
@@ -39,24 +39,28 @@ export class ResearchTableComponent implements OnInit {
       // this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
   }
 
-  onRowEditInit(res: Annonce) {
+  onRowEditInit(res: any) {
     this.cloned[res.id] = {...res};
 }
 
-onRowEditSave(res: Annonce) {
-    if (res.region) {
-        delete this.cloned[res.id];
-        //this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
-    }
-    else {
-       // this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
-    }
+onRowEditSave(res: any) {   
+    this.dataService.UpdateNameReSearch(res).subscribe((reponse:any)=>{
+            if (!reponse.error) {        
+                  delete this.cloned[res.id];
+                  alert("Le nom " + res.name + " a été modifié");
+            }
+            else{
+                  alert(reponse.message);
+            }   
+        })
 }
 
-onRowEditCancel(res: Annonce, index: number) {
+onRowEditCancel(res: any, index: number) {
     this.data[index] = this.cloned[res.id];
     delete this.cloned[res.id];
 }
+
+
 
 
 

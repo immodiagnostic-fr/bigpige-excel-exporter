@@ -7,7 +7,7 @@
             
         </div>
          
-              <button type="button" (click)="showDialog()" pButton  label="Sauvgarder La Recherche"></button>
+              <button  *ngIf="filterResult" type="button" (click)="showDialog()" pButton  label="Sauvgarder La Recherche"></button>
             
               <p-dialog header=" Veuillez saisir un nom pour cette recherche" [(visible)]="displayBasic"
                [style]="{width: '30vw'}" [baseZIndex]="10000">
