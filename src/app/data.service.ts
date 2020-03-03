@@ -12,6 +12,7 @@ import { environment as env } from 'src/environments/environment';
 export class DataService {
 
   public searchResult = new Subject<AnnonceSearchResultModel>();
+  public historyWanted:any;
 
   constructor(private http: HttpClient) {}
 
@@ -33,21 +34,21 @@ export class DataService {
     })
   }
 
-  saveSearched(name:string,research: any) {  
-    return this.http.post(env.api_host + "/recherches", {name,research} , {
+  saveSearched(nom:string,recherche: any) {  
+    return this.http.post(env.api_host + "/recherches", {nom,recherche} , {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
   }
 
-  UpdateNameReSearch(research: any) { 
-    alert(research.id); 
-    return this.http.put(env.api_host + "/recherches/" + research.id, research , {
+  UpdateNameReSearch(id:number,nom:string) { 
+    
+    return this.http.put(env.api_host + "/recherches" , {id,nom} , {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
   }
 
   getSearched(){
-    return this.http.get(env.api_host + '/');
+    return this.http.get(env.api_host + "/recherches");
   }
 
   getRegions() {

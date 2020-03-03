@@ -12,9 +12,9 @@
               <p-dialog header=" Veuillez saisir un nom pour cette recherche" [(visible)]="displayBasic"
                [style]="{width: '30vw'}" [baseZIndex]="10000">
                  
-                  <input  type="text" size="30" pInputText [(ngModel)]="text"> 
+                  <input  type="text" size="30" pInputText [(ngModel)]="nom"> 
                <p-footer>
-              <button type="button" pButton  (click)="sauvegarder()" label="Sauvegarder" [disabled]="!text"></button>       
+              <button type="button" pButton  (click)="sauvegarder()" label="Sauvegarder" [disabled]="!nom"></button>       
               </p-footer>
              </p-dialog>
         

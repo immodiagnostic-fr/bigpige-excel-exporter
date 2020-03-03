@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Annonce } from '../Annonce';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-research-table',
@@ -17,26 +19,14 @@ export class ResearchTableComponent implements OnInit {
   cloned: { [s: string]: any; } = {};
   
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService , private router:Router) { }
 
   ngOnInit() {
-    // this.dataService.getSearched().subscribe((res:any)=>{
-    //   this.result = res;
-    //   })
-    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
+    this.dataService.getSearched().subscribe((res:any)=>{
+      this.data = res;
+      })
+    //this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
 
-      // this.cols = [
-      //   { field: 'id', header: 'Id' },
-      //   { field: 'date', header: 'Date' },
-      //   { field: 'site', header: 'Site' },
-      //   { field: 'region', header: 'Region' },
-      //   //  { field: 'departement', header: 'Departement' },
-      //   { field: 'codepostal', header: 'Code Postal' },
-      //   { field: 'ville', header: 'Ville' },
-      //   { field: 'categorie', header: 'Categorie' },
-      //   { field: 'prix', header: 'Prix' },
-      // ];
-      // this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
   }
 
   onRowEditInit(res: any) {
@@ -44,7 +34,7 @@ export class ResearchTableComponent implements OnInit {
 }
 
 onRowEditSave(res: any) {   
-    this.dataService.UpdateNameReSearch(res).subscribe((reponse:any)=>{
+    this.dataService.UpdateNameReSearch(res.id,res.nom).subscribe((reponse:any)=>{
             if (!reponse.error) {        
                   delete this.cloned[res.id];
                   alert("Le nom " + res.name + " a été modifié");
@@ -60,6 +50,24 @@ onRowEditCancel(res: any, index: number) {
     delete this.cloned[res.id];
 }
 
+rechercher(ob:any){
+    // this.dataService.historyWanted = {        
+    //     "date_minimum":  ob.startDate ? ob.startDate : null,
+    //     "date_maximum":  ob.stopDate ? ob.stopDate : null,
+    //     "prix_minimum":  ob.rangeValues ? ob.rangeValues[0] : null,
+    //     "prix_maximum":  ob.rangeValues ? ob.rangeValues[1] : null,
+    //     "region":  ob.selectedRegions ? ob.selectedRegions : null,
+    //     "ville":  ob.ville ? ob.ville : null,
+    //     "code_postal":  ob.codePostal ? ob.codePostal : null,
+    //     "categorie":  ob.selectedCategories ? ob.selectedCategories : null,
+    //     "departement_code": ob.selectedDepartements ? ob.selectedDepartements : null,
+    //     "telephone":  ob.telephone ? ob.telephone : null,
+    //     "type_telephone" : ob.typeTelephone ? ob.typeTelephone : null
+    //   }
+    this.dataService.historyWanted = ob.filtres;
+    //alert( this.dataService.historyWanted.region)
+    this.router.navigate(['/home']);
+}
 
 
 

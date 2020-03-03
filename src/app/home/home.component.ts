@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       this.dataService.getCategories(),
       this.dataService.getDepartements()
     ).subscribe((res:[any[], any[], any[], any[]])=> {
-      this.data = res[0];
+      //this.data = res[0];
       //this.regions = res[1];
       //this.categories = res[2].map(c => c.categorie);     
       this.regions = [];
@@ -72,6 +72,16 @@ export class HomeComponent implements OnInit {
           }    
           this.loading = false;
     });
+
+    if(this.dataService.historyWanted){
+       console.log(this.dataService.historyWanted);
+       
+       this.dataService.postFiltered(this.dataService.historyWanted).add(()=>{
+        this.dataService.historyWanted = null;
+      });
+       
+    }
+    
 
     this.fr = {
       monthNames: [ "janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre" ],
@@ -104,16 +114,7 @@ export class HomeComponent implements OnInit {
 
   onFilter() {
 
-    // const Region = this.filterForm.get('region').value;
-    // const Categorie = this.filterForm.get('categorie').value;
-    // const Ville =this.filterForm.get('ville').value;
-    // const CodePostal =this.filterForm.get('codePostal').value;
-    // const StartDate  = this.filterForm.get('startDate').value;
-    // const StopDate  = this.filterForm.get('stopDate').value;
-    // const RangeValues = this.filterForm.get('rangeValues').value;
-
     var ob:any = this.filterForm.getRawValue();
-    console.log(ob);
     this.filters = {
       "date_minimum":  ob.startDate ? ob.startDate : null,
       "date_maximum":  ob.stopDate ? ob.stopDate : null,
@@ -133,5 +134,6 @@ export class HomeComponent implements OnInit {
       this.loading = false;
     });
   }
-
+  
+  
 }

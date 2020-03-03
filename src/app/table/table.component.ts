@@ -19,12 +19,12 @@ export class TableComponent implements OnInit {
   result_size:number;
   result_csv_download_link:string;
   displayBasic: boolean;
-  text:string;
+  nom:string;
 
   constructor(private dataService:DataService){}
 
   ngOnInit() {
-    this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
+   // this.dataService.getAnnonces().subscribe((res:any)=>{this.data = res;})
 
     this.cols = [
       { field: 'id', header: 'Id' },
@@ -94,9 +94,9 @@ export class TableComponent implements OnInit {
   }
   
   sauvegarder(){
-    this.dataService.saveSearched(this.text,this.filterResult).subscribe((res:any)=>{
+    this.dataService.saveSearched(this.nom,this.filterResult).subscribe((res:any)=>{
     if(!res.error){
-    this.text=null;
+    this.nom=null;
     this.displayBasic = false;
     }
     else{
