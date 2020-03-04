@@ -6,21 +6,13 @@ import { Annonce } from './Annonce';
 import { SelectItem } from 'primeng/api';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
-constructor(){
+	constructor(){}
 
-}
-ngOnInit(){
-  
-}
-  // reset(){
-  //  // this.filterForm.reset();
-  //   this.initForm();
-  // }
-
+	ngOnInit(){}
 }

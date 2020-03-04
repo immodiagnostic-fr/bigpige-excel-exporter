@@ -34,15 +34,14 @@ export class DataService {
     })
   }
 
-  saveSearched(nom:string,recherche: any) {  
+  saveSearched(nom:string,recherche: any) {
     return this.http.post(env.api_host + "/recherches", {nom,recherche} , {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
   }
 
-  UpdateNameReSearch(id:number,nom:string) { 
-    
-    return this.http.put(env.api_host + "/recherches" , {id,nom} , {
+  UpdateNameReSearch(id:number,nom:string) {
+    return this.http.post(env.api_host + "/recherches/edit" , {id,nom} , {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
   }

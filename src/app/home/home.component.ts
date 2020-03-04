@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     return this.filterForm.get('stopDate').value;
   }
 
-  constructor(private formBuilder: FormBuilder,private dataService:DataService){
+  constructor(private formBuilder: FormBuilder,public dataService:DataService){
     
   }
 

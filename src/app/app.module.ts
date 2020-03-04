@@ -27,14 +27,14 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [
+    declarations: [
     AppComponent,
     TableComponent,
     ResearchTableComponent,
     HomeComponent,
     HeaderComponent
-  ],
-  imports: [
+    ],
+    imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -55,8 +55,8 @@ import { HeaderComponent } from './header/header.component';
     CheckboxModule,
     DialogModule
 
-  ],
-  providers: [DataService],
-  bootstrap: [AppComponent]
+    ],
+    providers: [DataService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

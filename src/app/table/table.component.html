@@ -1,37 +1,37 @@
 
 <p-table #dt [columns]="cols" [value]="data"  selectionMode="multiple" [(selection)]="selectedAnnonces" [paginator]="true" [rows]="25">
-    <ng-template pTemplate="caption">
-        <div class="ui-helper-clearfix" style="text-align: left">
-            <strong *ngIf="result_size">{{result_size}} résultats</strong>
-            <a [href]="result_csv_download_link" *ngIf="result_csv_download_link" target="_blank">Obtenir le fichier CSV</a>
-            
-        </div>
-         
-              <button  *ngIf="filterResult" type="button" (click)="showDialog()" pButton  label="Sauvgarder La Recherche"></button>
-            
-              <p-dialog header=" Veuillez saisir un nom pour cette recherche" [(visible)]="displayBasic"
-               [style]="{width: '30vw'}" [baseZIndex]="10000">
-                 
-                  <input  type="text" size="30" pInputText [(ngModel)]="nom"> 
-               <p-footer>
-              <button type="button" pButton  (click)="sauvegarder()" label="Sauvegarder" [disabled]="!nom"></button>       
-              </p-footer>
-             </p-dialog>
-        
-    </ng-template>
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                {{col.header}}
-                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
+  <ng-template pTemplate="caption">
+    <div class="ui-helper-clearfix" style="text-align: left">
+      <strong *ngIf="result_size" style="display: inline-block; width: 130px;">{{result_size}} résultats</strong>
+      <a [href]="result_csv_download_link" *ngIf="result_csv_download_link" target="_blank" style="text-align: left; display: inline-block; ">Obtenir le fichier CSV</a>
+
+    </div>
+
+    <button  *ngIf="filterResult" type="button" (click)="showDialog()" pButton  label="Sauvgarder La Recherche"></button>
+
+    <p-dialog header=" Veuillez saisir un nom pour cette recherche" [(visible)]="displayBasic"
+    [style]="{width: '30vw'}" [baseZIndex]="10000">
+
+    <input  type="text" size="30" pInputText [(ngModel)]="nom"> 
+    <p-footer>
+      <button type="button" pButton  (click)="sauvegarder()" label="Sauvegarder" [disabled]="!nom"></button>       
+    </p-footer>
+  </p-dialog>
+
+</ng-template>
+<ng-template pTemplate="header" let-columns>
+  <tr>
+    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+      {{col.header}}
+      <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+    </th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-rowData let-columns="columns">
+  <tr>
+    <td *ngFor="let col of columns">
+      {{rowData[col.field]}}
+    </td>
+  </tr>
+</ng-template>
 </p-table>
