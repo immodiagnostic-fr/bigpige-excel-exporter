@@ -1,8 +1,25 @@
-<div  classe="mycenter">
+<!-- <div  classe="mycenter">
   <img src="assets/images/logo.png" class="logo" />
 <div style="padding-bottom:20px;margin-left: 40%">
    <a style="margin-right: 80px;" routerLinkActive="active" [routerLink]="['/home']"  > Home Page </a>
    <a routerLinkActive="active" [routerLink]="['/historique']"> Historique </a>
 </div>
-</div>
+</div> -->
+<nav class="navbar navbar-default">
+  <div class="logo">
+    <img src="assets/images/logo.png"/>
+  </div>
+  <div class="container-fluid">
+    <div class="navbar-collapse">
+      <div class="mycenter">
+      <ul class="nav navbar-nav ">
+        <li ><a routerLinkActive="active" [routerLink]="['/home']"  > Home Page </a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/historique']"> Historique </a></li>
+        
+      </ul>
+    </div>
+
+    </div>
+  </div>
+</nav>
 

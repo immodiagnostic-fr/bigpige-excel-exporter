@@ -13,35 +13,35 @@
             <p-multiSelect [options]="regions" formControlName="selectedRegions"
               [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Region"
                [resetFilterOnHide]="true"></p-multiSelect>
-               <br/> <br/>
+              
             
-            <p-multiSelect [options]="categories" formControlName="selectedCategories"
-              [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Categorie"
+            <p-multiSelect [options]="categories" formControlName="selectedCategories" 
+              [showToggleAll]="false" [style]="{'min-width':'175px','margin-top':'12px'}" [filter]="true" defaultLabel="Categorie"
                [resetFilterOnHide]="true"></p-multiSelect>
-               <br/> <br/>
+               
                
                <p-multiSelect [options]="departements" formControlName="selectedDepartements"
-                 [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px'}" defaultLabel="Departement"
+                 [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px','margin-top':'12px'}" defaultLabel="Departement"
                   [resetFilterOnHide]="true"></p-multiSelect>
            
-                  <br/><br/>
+                  
             
-            <input  type="text" pInputText placeholder="Ville" 
+            <input  type="text" pInputText placeholder="Ville" style="margin-top:12px"
             formControlName="ville"> 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('ville').errors &&
             (filterForm.get('ville').dirty || filterForm.get('ville').touched )">
             *Ce champs est obligatoire
             </p>
-            <br/><br/>
             
-            <input  type="text"  pInputText placeholder="Code Postal" 
+            
+            <input  type="text"  pInputText placeholder="Code Postal" style="margin-top:17px"
             formControlName="codePostal" > 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('codePostal').errors &&
             (filterForm.get('codePostal').dirty || filterForm.get('codePostal').touched )">
             *Ce champs est obligatoire et doit contenir 5 chiffres
             </p>
-            <br/> <br/>
-            <input  type="text" pInputText placeholder="Téléphone" 
+            
+            <input  type="text" pInputText placeholder="Téléphone" style="margin-top:17px"
             formControlName="telephone" >
 
 
@@ -52,8 +52,8 @@
    <p-checkbox name="group1" value="2" label="Telephone Fixe" [formControl]="filterForm.controls['typeTelephone']" inputId="tf"></p-checkbox> 
 
 
-            <br/> 
-            <p>Prix entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
+            <br/> <br/>
+            <p>Entre: {{rangeValues[0] + ' et ' + rangeValues[1] + ' €'}}</p>
             <div class="priceSlider">
             <p-slider  formControlName="rangeValues" [min]="0" [max]="1000000" [step]="100"
             [styleClass]="'priceSlider'" [range]="true"></p-slider>
@@ -65,7 +65,7 @@
 
 
 
-            <br/> <br/>
+            <br/> 
             <div class="calendar" style="margin-bottom: 20px;">
                 <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
                 formControlName="startDate" id="startDate"  [showIcon]="true"   
@@ -108,8 +108,9 @@
             </div>
         </form>
     </div>
-    <p-card class="p-col-12 p-md-10  p-col-nogutter">
+   
+    <p-card class="p-col-12 p-md-10  p-col-nogutter"  [style]="{'margin-right':'2%'}" >
             <app-table [filterResult]="filters"></app-table>
     </p-card>
-
+  
 </div>

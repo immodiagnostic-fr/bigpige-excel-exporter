@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       this.dataService.getCategories(),
       this.dataService.getDepartements()
     ).subscribe((res:[any[], any[], any[], any[]])=> {
-      //this.data = res[0];
+      this.data = res[0];
       //this.regions = res[1];
       //this.categories = res[2].map(c => c.categorie);     
       this.regions = [];
