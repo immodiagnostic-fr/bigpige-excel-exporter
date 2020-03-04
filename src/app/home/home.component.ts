@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit {
   }
 
   initForm() {
+    this.rangeValues=[0,1000000];
     this.filterForm = this.formBuilder.group({
       selectedRegions: [null],
       selectedCategories: [null],
