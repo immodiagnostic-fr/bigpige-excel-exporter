@@ -4,10 +4,9 @@
     <div class="ui-helper-clearfix" style="text-align: left">
       <strong *ngIf="result_size" style="display: inline-block; width: 130px;">{{result_size}} résultats</strong>
       <a [href]="result_csv_download_link" *ngIf="result_csv_download_link" target="_blank" style="text-align: left; display: inline-block; ">Obtenir le fichier CSV</a>
-
     </div>
 
-    <button  *ngIf="filterResult" type="button" (click)="showDialog()" pButton  label="Sauvgarder La Recherche"></button>
+    <button  *ngIf="filterResult" type="button" (click)="showDialog()" pButton  label="Sauvegarder La Recherche"></button>
 
     <p-dialog header=" Veuillez saisir un nom pour cette recherche" [(visible)]="displayBasic"
     [style]="{width: '30vw'}" [baseZIndex]="10000">
