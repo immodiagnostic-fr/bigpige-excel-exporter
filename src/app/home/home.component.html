@@ -1,12 +1,12 @@
-<!-- <p-progressBar mode="indeterminate" [style]="{'height': '6px','margin-top':'200px'}"
-  *ngIf="dataService.historyWanted"></p-progressBar> -->
-<div class="p-grid sample-layout">
+<p-progressBar mode="indeterminate" [style]="{'height': '6px','margin-top':'200px'}"
+  *ngIf="dataService.historyWanted"></p-progressBar>
+<div class="p-grid sample-layout" *ngIf="!dataService.historyWanted">
     <div class="p-col-12 p-md-2">
 
-         <p-progressSpinner *ngIf="dataService.historyWanted" [style]="{'margin-left':'20%','margin-top':'200px','width':'150px'}"
-                strokeWidth="4"></p-progressSpinner>
+         <!-- <p-progressSpinner *ngIf="dataService.historyWanted" [style]="{'margin-left':'20%','margin-top':'200px','width':'150px'}"
+                strokeWidth="4"></p-progressSpinner> -->
         
-        <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="left-search-form" *ngIf="!dataService.historyWanted">
+        <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="left-search-form" >
 
             
            
