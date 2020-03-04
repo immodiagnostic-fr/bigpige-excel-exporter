@@ -8,8 +8,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy-prod": "ng build --prod --base-href /excel-exporter/bigpige-excel-exporter-dist/ && bash ./deploy.sh",
-    "deploy-dev": "ng build && bash ./deploy.sh"
   },
   "private": true,
   "dependencies": {
