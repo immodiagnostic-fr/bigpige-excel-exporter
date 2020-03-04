@@ -35,13 +35,12 @@ export class ResearchTableComponent implements OnInit {
 
 onRowEditSave(res: any) {   
     this.dataService.UpdateNameReSearch(res.id,res.nom).subscribe((reponse:any)=>{
-            if (!reponse.error) {        
+            if (!reponse.error) {
                   delete this.cloned[res.id];
-                  alert("Le nom " + res.name + " a été modifié");
             }
             else{
                   alert(reponse.message);
-            }   
+            }
         })
 }
 
