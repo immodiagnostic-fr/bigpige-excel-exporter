@@ -73,15 +73,6 @@ export class HomeComponent implements OnInit {
           this.loading = false;
     });
 
-    if(this.dataService.historyWanted){
-       console.log(this.dataService.historyWanted);
-       
-       this.dataService.postFiltered(this.dataService.historyWanted).add(()=>{
-        this.dataService.historyWanted = null;
-      });
-       
-    }
-    
 
     this.fr = {
       monthNames: [ "janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre" ],
@@ -90,10 +81,21 @@ export class HomeComponent implements OnInit {
       clear: 'clear'
     }
 
-    this.initForm();
+
+    if(this.dataService.historyWanted){
+      this.initForm(this.dataService.historyWanted);
+      console.log(this.dataService.historyWanted);
+      this.dataService.postFiltered(this.dataService.historyWanted).add(()=>{
+        this.dataService.historyWanted = null;
+      });
+    }
+    else {
+      this.initForm();
+    }
+
   }
 
-  initForm() {
+  initForm(initialValues = null) {
     this.rangeValues=[0,1000000];
     this.filterForm = this.formBuilder.group({
       selectedRegions: [null],
@@ -111,6 +113,24 @@ export class HomeComponent implements OnInit {
         //,Validators.required
       ]
     });
+
+    //
+    if(initialValues) {
+      this.filterForm.patchValue({
+        selectedRegions:        initialValues.region,
+        selectedCategories:     initialValues.categorie,
+        selectedDepartements:   initialValues.departement_code,
+        ville:                  initialValues.ville,
+        codePostal:             initialValues.code_postal,
+        startDate:              initialValues.date_minimum ? new Date(initialValues.date_minimum) : null,
+        stopDate:               initialValues.date_maximum ? new Date(initialValues.date_maximum) : null,
+        rangeValues:            [initialValues.prix_minimum, initialValues.prix_maximum],
+        telephone:              initialValues.telephone,
+        typeTelephone:          initialValues.type_telephone,
+      });
+      console.log("after filling filterForm initialValues")
+      console.log(this.filterForm.getRawValue())
+    }
   }
 
   onFilter() {

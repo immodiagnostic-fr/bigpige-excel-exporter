@@ -67,7 +67,11 @@
 
             <br/> 
             <div class="calendar" style="margin-bottom: 20px;">
-                <p-calendar  view="month" [locale]="fr" dateFormat="mm/yy"  [maxDate]="getStopDate"
+                <p-calendar  
+                view="month" 
+                [locale]="fr" 
+                dateFormat="mm/yy"  
+                [maxDate]="getStopDate"
                 formControlName="startDate" id="startDate"  [showIcon]="true"   
                 [inputStyle]="{'width':'140px'}" placeholder="Date Minimum"
                 [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true"></p-calendar>
