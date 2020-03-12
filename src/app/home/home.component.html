@@ -6,7 +6,7 @@
          <!-- <p-progressSpinner *ngIf="dataService.historyWanted" [style]="{'margin-left':'20%','margin-top':'200px','width':'150px'}"
                 strokeWidth="4"></p-progressSpinner> -->
         
-        <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="left-search-form" >
+        <form [formGroup]="filterForm" class="left-search-form" >
 
             <h4>Rechercher dans:</h4>
            
@@ -97,7 +97,7 @@
              
             <div>
               <p-button label=" Filtrer / Rechercher " [disabled]="filterForm.invalid" [style]="{'min-width': '175px'}"
-              type="submit" *ngIf="!loading">
+              type="button" (click)="onFilter()" *ngIf="!loading">
             </p-button>
 
               <!-- <p-progressSpinner *ngIf="loading" [style]="{'margin-left':'40%','width':'35px'}"
