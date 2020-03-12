@@ -8,25 +8,25 @@
         
         <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="left-search-form" >
 
-            
+            <h4>Rechercher dans:</h4>
            
             <p-multiSelect [options]="regions" formControlName="selectedRegions"
-              [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Region"
+              [showToggleAll]="false" [style]="{'min-width':'175px'}" [filter]="true" defaultLabel="Toutes les régions"
                [resetFilterOnHide]="true"></p-multiSelect>
               
             
             <p-multiSelect [options]="categories" formControlName="selectedCategories" 
-              [showToggleAll]="false" [style]="{'min-width':'175px','margin-top':'12px'}" [filter]="true" defaultLabel="Categorie"
+              [showToggleAll]="false" [style]="{'min-width':'175px','margin-top':'12px'}" [filter]="true" defaultLabel="Toutes catégories"
                [resetFilterOnHide]="true"></p-multiSelect>
                
                
                <p-multiSelect [options]="departements" formControlName="selectedDepartements"
-                 [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px','margin-top':'12px'}" defaultLabel="Departement"
+                 [showToggleAll]="false"  [filter]="true" [style]="{'min-width':'175px','margin-top':'12px'}" defaultLabel="Tous départements"
                   [resetFilterOnHide]="true"></p-multiSelect>
            
                   
             
-            <input  type="text" pInputText placeholder="Ville" style="margin-top:12px"
+            <input  type="text" pInputText placeholder="Nom d'une ville" style="margin-top:12px;width: 175px;"
             formControlName="ville"> 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('ville').errors &&
             (filterForm.get('ville').dirty || filterForm.get('ville').touched )">
@@ -34,22 +34,20 @@
             </p>
             
             
-            <input  type="text"  pInputText placeholder="Code Postal" style="margin-top:17px"
+            <input  type="text"  pInputText placeholder="Code Postal (5 chiffres)" style="margin-top:17px;width: 175px;"
             formControlName="codePostal" > 
             <p style="color:red; font-size:11px;" *ngIf="filterForm.get('codePostal').errors &&
             (filterForm.get('codePostal').dirty || filterForm.get('codePostal').touched )">
             *Ce champs est obligatoire et doit contenir 5 chiffres
             </p>
             
-            <input  type="text" pInputText placeholder="Téléphone" style="margin-top:17px"
+            <input  type="text" pInputText placeholder="No. de téléphone" style="margin-top:17px;width: 175px;"
             formControlName="telephone" >
 
 
-
-            
             <br/> <br/> 
-   <p-checkbox name="group1" value="1" label="Telephone Portable" [formControl]="filterForm.controls['typeTelephone']" inputId="tp"></p-checkbox><br/>
-   <p-checkbox name="group1" value="2" label="Telephone Fixe" [formControl]="filterForm.controls['typeTelephone']" inputId="tf"></p-checkbox> 
+             <p-checkbox name="group1" value="1" label="Telephone Portable" [formControl]="filterForm.controls['typeTelephone']" inputId="tp"></p-checkbox><br/>
+             <p-checkbox name="group1" value="2" label="Telephone Fixe" [formControl]="filterForm.controls['typeTelephone']" inputId="tf"></p-checkbox> 
 
 
             <br/> <br/>
@@ -108,7 +106,7 @@
                 <p-progressBar mode="indeterminate"  *ngIf="loading"
                  [style]="{'height': '3px','width': '175px'}"></p-progressBar>
 <br/> <br/>
-                 <button pButton type="button" label="Reset" class="ui-button-danger" (click)="initForm()"></button>
+                 <button pButton type="button" label="Vider les champs" class="ui-button-danger" (click)="initForm()" style="min-width: 175px;"></button>
             </div>
         </form>
     </div>
